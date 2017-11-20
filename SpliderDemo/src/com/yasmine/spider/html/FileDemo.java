@@ -8,7 +8,7 @@ public class FileDemo {
   
     public static void main(String[] args) {  
          //    在此目录中找文件     
-        String baseDIR = "/Users/yuancan/study/front";   
+        String baseDIR = "C:\\Users\\admin\\Desktop\\front\\others";   
         //    找扩展名为html的文件     
         String fileName = "*.html";      
         List resultList = new ArrayList();  
