@@ -19,6 +19,7 @@ public class FileDemo {
         } else {     
             for (int i = 0; i < resultList.size(); i++) {     
             	String filePath=resultList.get(i).toString();
+            	System.out.println("路径-----"+filePath);
                 link.checkUrl(filePath);
             }     
         }     

@@ -16,7 +16,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class OuterLink {
-	public static final String path = "C:\\Users\\admin\\Desktop\\front\\subUrl.txt";
+	public static final String path = "C:\\Users\\admin\\Desktop\\front\\subUrl1.txt";
 
 	public static String previewPath = "";
 
