@@ -16,7 +16,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class OuterLink {
-	public static final String path = "C:\\Users\\admin\\Desktop\\front\\subUrl1.txt";
+	public static final String path = "F:\\outerlink\\mainpre.txt";
 
 	public static String previewPath = "";
 
@@ -45,19 +45,20 @@ public class OuterLink {
 						// 写入文件
 						contentToTxt(filePath, link);
 					}
-				} else {
-					// a、onClick要考虑Click首字母为小写吗？
-
-					String onClickStr = link.attr("onClick");
-					// 1、先看下是否有onClick事件,如果有，再看一下是否有window.open(方法，如果没有，再看网址是否为外链
-					// b、onclick="window.open( 'http://www.beian.gov.cn/portal
-					if (!StringUtil.isBlank(onClickStr) && !onClickStr.contains("window.open('")) {
-						if (isOuterLink(onClickStr)) {
-
-							contentToTxt(filePath, link);
-						}
-					}
-				}
+				} 
+//				else {
+//					// a、onClick要考虑Click首字母为小写吗？
+//
+//					String onClickStr = link.attr("onClick");
+//					// 1、先看下是否有onClick事件,如果有，再看一下是否有window.open(方法，如果没有，再看网址是否为外链
+//					// b、onclick="window.open( 'http://www.beian.gov.cn/portal
+//					if (!StringUtil.isBlank(onClickStr) && !onClickStr.contains("window.open('")) {
+//						if (isOuterLink(onClickStr)) {
+//
+//							contentToTxt(filePath, link);
+//						}
+//					}
+//				}
 
 			}
 
@@ -86,8 +87,7 @@ public class OuterLink {
 			// ?jijinhao.cn,
 			if (!(linkHref.indexOf("cngold.org") > -1 || linkHref.indexOf("cngoldres.org") > -1
 					|| linkHref.indexOf("jin99.cn") > -1 || linkHref.indexOf("cngoldres.com") > -1
-					|| linkHref.indexOf("cnbaiyin.com") > -1 || linkHref.indexOf("cnbaiyin.com") > -1
-					|| linkHref.indexOf("18qh.com") > -1)) {
+					)) {
 				return true;
 			}
 		}

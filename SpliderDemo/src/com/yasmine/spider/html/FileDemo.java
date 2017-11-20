@@ -2,13 +2,15 @@ package com.yasmine.spider.html;
 
 import java.io.File;  
 import java.util.ArrayList;  
-import java.util.List;  
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;  
   
 public class FileDemo {  
   
     public static void main(String[] args) {  
          //    在此目录中找文件     
-        String baseDIR = "C:\\Users\\admin\\Desktop\\front\\others";   
+        String baseDIR = "C:\\Users\\admin\\Desktop\\front";   
         //    找扩展名为html的文件     
         String fileName = "*.html";      
         List resultList = new ArrayList();  
@@ -16,12 +18,22 @@ public class FileDemo {
         OuterLink link=new OuterLink();
         if (resultList.size() == 0) {     
             System.out.println("No File Found.");     
-        } else {     
-            for (int i = 0; i < resultList.size(); i++) {     
-            	String filePath=resultList.get(i).toString();
-            	System.out.println("路径-----"+filePath);
-                link.checkUrl(filePath);
-            }     
+        } else {  
+        	ExecutorService executorService = Executors.newFixedThreadPool(100);
+            try {
+     		executorService.execute(new Runnable() {
+     				@Override
+     				public void run() {
+     					 for (int i = 0; i < resultList.size(); i++) {     
+     		            	String filePath=resultList.get(i).toString();
+     		                link.checkUrl(filePath);
+     		            }   
+     				}
+     			});
+     		} finally {
+     			executorService.shutdown();
+     		}
+             
         }     
   
     }  
